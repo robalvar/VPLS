@@ -1,0 +1,30 @@
+name: l2vpn-test
+topology:
+  nodes:
+    Cisco8201-1:
+      kind: cisco_c8000
+      image: 8201-sys_clab586:25.2.2
+      startup-config: /home/cisco/dcloud/8201-1.cfg
+      enforce-startup-config: true
+    Cisco8201-2:
+      kind: cisco_c8000
+      image: 8201-sys_clab586:25.2.2
+      startup-config: /home/cisco/dcloud/8201-2.cfg
+      enforce-startup-config: true
+    Cisco8201-3:
+      kind: cisco_c8000
+      image: 8201-sys_clab586:25.2.2
+      startup-config: /home/cisco/dcloud/8201-3.cfg
+      enforce-startup-config: true
+    Cisco8201-4:
+      kind: cisco_c8000
+      image: 8201-sys_clab586:25.2.2
+      startup-config: /home/cisco/dcloud/8201-4.cfg
+      enforce-startup-config: true
+  links:
+    - endpoints: ["Cisco8201-1:FH0_0_0_0", "Cisco8201-2:FH0_0_0_0"]
+    - endpoints: ["Cisco8201-2:FH0_0_0_1", "Cisco8201-3:FH0_0_0_1"]
+    - endpoints: ["Cisco8201-1:FH0_0_0_2", "Cisco8201-3:FH0_0_0_2"]
+    - endpoints: ["Cisco8201-1:FH0_0_0_1", "Cisco8201-4:FH0_0_0_1"]
+    - endpoints: ["Cisco8201-2:FH0_0_0_2", "Cisco8201-4:FH0_0_0_2"]
+    - endpoints: ["Cisco8201-3:FH0_0_0_3", "Cisco8201-4:FH0_0_0_3"]
